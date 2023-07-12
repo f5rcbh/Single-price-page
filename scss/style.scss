@@ -1,0 +1,154 @@
+@forward "global";
+@use "./layouts/breakpoint" as break;
+@use "./fonts/color" as color;
+@use "./fonts/text" as text;
+@use "./layouts/center" as layout;
+
+body {
+  height: 100vh;
+  @include layout.flexCenter();
+  flex-direction: column;
+  background-color: color.$lightGray;
+  font-family: text.$family;
+  @include break.breakpoint(small) {
+    height: auto;
+    margin: 2rem;
+  }
+  .box {
+    max-width: 35%;
+    @include break.breakpoint(large) {
+      max-width: 50%;
+    }
+    @include break.breakpoint(mid) {
+      max-width: 60%;
+    }
+    @include break.breakpoint(small) {
+      max-width: 100%;
+    }
+    .top-layer {
+      border-radius: 10px 10px 0 0;
+      @include break.breakpoint(small) {
+        justify-content: center;
+      }
+      background-color: #ffffff;
+      @include layout.flexCenter();
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+      width: 100%;
+      h1 {
+        color: color.$cyan;
+        padding-bottom: 1.5rem;
+        @include break.breakpoint(small) {
+          font-size: 1.5rem;
+        }
+      }
+      h3 {
+        color: color.$brightYellow;
+        padding-bottom: 1rem;
+        @include break.breakpoint(small) {
+          font-size: 1rem;
+        }
+      }
+      p {
+        color: color.$grayBlue;
+        line-height: 1.5rem;
+        font-size: 1.1rem;
+        @include break.breakpoint(small) {
+          font-size: 1rem;
+          line-height: 2rem;
+        }
+      }
+    }
+    .bot-layer {
+      @include layout.gridCenter();
+      grid-template-columns: 1fr 1fr;
+      @include break.breakpoint(small) {
+        @include layout.flexCenter();
+        flex-direction: column;
+      }
+      .left-layer {
+        border-radius: 0 0 0 10px;
+        @include break.breakpoint(small) {
+          border-radius: 0;
+        }
+        background-color: color.$cyan;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        h3 {
+          color: color.$lightGray;
+          padding-bottom: 1rem;
+          font-size: 1.5rem;
+          @include break.breakpoint(small) {
+            font-size: 1rem;
+          }
+        }
+        p {
+          color: color.$lightGray;
+          padding-bottom: 1rem;
+          font-size: 1.1rem;
+          @include break.breakpoint(small) {
+            font-size: 1rem;
+          }
+          &:nth-child(2) {
+            padding-bottom: 0.5rem;
+          }
+          span {
+            color: color.$lightGray;
+            font-size: 2rem;
+            padding-right: 0.5rem;
+            font-weight: 700;
+            @include break.breakpoint(small) {
+              font-size: 1.5rem;
+            }
+          }
+        }
+        button {
+          width: 100%;
+          height: 3rem;
+          background-color: color.$brightYellow;
+          color: color.$lightGray;
+          font-size: 1.5rem;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          border-radius: 5px;
+          box-shadow: 0px 0.5rem 0.5rem #33333358;
+          @include break.breakpoint(small) {
+            font-size: 1rem;
+          }
+        }
+      }
+      .right-layer {
+        border-radius: 0 0 10px 0;
+        @include break.breakpoint(small) {
+          border-radius: 0 0 10px 10px;
+        }
+        background-color: color.$brightCyan;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        h3 {
+          color: color.$lightGray;
+          font-size: 1.5rem;
+          @include break.breakpoint(small) {
+            font-size: 1rem;
+          }
+        }
+        p {
+          padding: 1rem 0;
+          color: color.$lightGray;
+          line-height: 1.5rem;
+          font-size: 1.1rem;
+          word-wrap: normal;
+          word-break: keep-all;
+          @include break.breakpoint(small) {
+            font-size: 1rem;
+            line-height: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
